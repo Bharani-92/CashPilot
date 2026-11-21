@@ -1,0 +1,1040 @@
+/* ==========================================================
+   CASHPILOT | PREMIUM FINANCIAL DASHBOARD
+   Design: Modern SaaS | Responsive | Clean | Professional
+   ========================================================== */
+
+/* ---------- Design tokens ---------- */
+
+:root {
+  --teal-900: #0b3d3a;
+  --teal-800: #11544e;
+  --teal-700: #0f766e;
+  --teal-600: #14918a;
+  --teal-50: #e9f7f5;
+
+  --amber-600: #d97706;
+  --amber-500: #f59e0b;
+  --amber-50: #fff7e6;
+
+  --red-600: #dc2626;
+  --red-50: #fef2f2;
+
+  --green-600: #16a34a;
+  --green-50: #ecfdf3;
+
+  --ink: #111827;
+  --ink-soft: #374151;
+  --muted: #6b7280;
+
+  --line: #e5e7eb;
+  --line-strong: #d1d5db;
+
+  --panel: #ffffff;
+  --bg: #f4f7f9;
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+
+  --shadow-sm: 0 2px 5px rgba(15, 23, 42, 0.04);
+  --shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+  --shadow-hover: 0 12px 28px rgba(15, 23, 42, 0.08);
+
+  --focus: 0 0 0 3px rgba(20, 145, 138, 0.20);
+
+  --transition: 0.2s ease;
+}
+
+/* ---------- Reset ---------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/* ---------- Header ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  gap: 18px;
+  padding: 16px 30px;
+
+  background: linear-gradient(120deg, var(--teal-900), var(--teal-700));
+  color: white;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow: 0 4px 18px rgba(11, 61, 58, 0.18);
+}
+
+/* ---------- Branding ---------- */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #fbbf24, var(--amber-600));
+  color: white;
+
+  font-size: 18px;
+
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.brand-info h1 {
+  margin: 0;
+  color: white;
+
+  font-size: 19px;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+.brand-info span {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.70);
+}
+
+/* ---------- Navigation ---------- */
+
+nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+nav button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 9px 14px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition),
+    color var(--transition),
+    transform var(--transition);
+}
+
+nav button i {
+  font-size: 13px;
+}
+
+nav button:hover {
+  background: rgba(255, 255, 255, 0.10);
+  color: white;
+  transform: translateY(-1px);
+}
+
+nav button.active {
+  background: white;
+  color: var(--teal-900);
+  font-weight: 650;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+nav button:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+/* ---------- Header actions ---------- */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.notification-btn {
+  display: grid;
+  place-items: center;
+
+  width: 38px;
+  height: 38px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.notification-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.profile-icon {
+  display: grid;
+  place-items: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+
+  color: white;
+  font-size: 14px;
+}
+
+/* ---------- Main content ---------- */
+
+main {
+  width: 100%;
+  max-width: 1240px;
+
+  margin: 0 auto;
+  padding: 30px 28px 60px;
+
+  animation: page-enter 0.35s ease both;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Headings ---------- */
+
+h2 {
+  margin: 28px 0 16px;
+
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+
+  color: var(--ink);
+}
+
+h3 {
+  margin: 20px 0 10px;
+
+  font-size: 16px;
+  font-weight: 650;
+
+  color: var(--ink-soft);
+}
+
+h4 {
+  margin: 14px 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+p {
+  margin: 8px 0;
+  color: var(--ink-soft);
+}
+
+strong {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+/* ---------- Panels ---------- */
+
+section {
+  padding: 22px;
+
+  margin-bottom: 18px;
+
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+section:hover {
+  border-color: #d5e7e4;
+  box-shadow: var(--shadow-hover);
+}
+
+/* ---------- Forms ---------- */
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+
+  padding: 16px;
+
+  margin: 12px 0 20px;
+
+  background: #fafcfd;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+
+  transition: border-color var(--transition);
+}
+
+form:focus-within {
+  border-color: #b6dcd6;
+}
+
+label {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: var(--muted);
+}
+
+/* ---------- Inputs ---------- */
+
+input,
+select,
+textarea {
+  width: auto;
+  min-width: 150px;
+
+  padding: 10px 12px;
+
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+
+  background: white;
+  color: var(--ink);
+
+  font: inherit;
+  font-size: 14px;
+
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--teal-600);
+  box-shadow: var(--focus);
+}
+
+input[type="date"] {
+  min-width: 160px;
+}
+
+input[type="number"] {
+  min-width: 120px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ---------- Buttons ---------- */
+
+button {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 550;
+
+  padding: 9px 14px;
+
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+
+  background: white;
+  color: var(--ink-soft);
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+button:hover {
+  border-color: var(--teal-600);
+  color: var(--teal-700);
+
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+/* Primary buttons */
+
+button[type="submit"] {
+  background: var(--teal-700);
+  border-color: var(--teal-700);
+  color: white;
+
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(15, 118, 110, 0.15);
+}
+
+button[type="submit"]:hover {
+  background: var(--teal-900);
+  border-color: var(--teal-900);
+  color: white;
+
+  box-shadow: 0 5px 14px rgba(15, 118, 110, 0.22);
+}
+
+/* Disabled buttons */
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+button:disabled:hover {
+  transform: none;
+}
+
+/* Delete and remove buttons */
+
+button[data-delete],
+button[data-remove],
+button[data-delete-fee] {
+  background: var(--red-50);
+  color: var(--red-600);
+  border-color: #fecaca;
+}
+
+button[data-delete]:hover,
+button[data-remove]:hover,
+button[data-delete-fee]:hover {
+  background: var(--red-600);
+  color: white;
+  border-color: var(--red-600);
+}
+
+/* ---------- Tables ---------- */
+
+table {
+  width: 100%;
+
+  margin: 12px 0 20px;
+
+  border-collapse: separate;
+  border-spacing: 0;
+
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+
+  font-size: 13px;
+  box-shadow: var(--shadow);
+}
+
+th,
+td {
+  padding: 13px 15px;
+
+  text-align: left;
+  vertical-align: middle;
+
+  border-bottom: 1px solid var(--line);
+}
+
+th {
+  background: #f8fafb;
+
+  color: var(--muted);
+
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+tbody tr {
+  transition: background var(--transition);
+}
+
+tbody tr:hover {
+  background: #f5fbfa;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+td button {
+  padding: 6px 10px;
+  margin: 2px;
+
+  font-size: 12px;
+}
+
+/* ---------- Lists ---------- */
+
+ul {
+  display: grid;
+  gap: 10px;
+
+  padding: 0;
+  margin: 12px 0 20px;
+
+  list-style: none;
+}
+
+li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 14px 16px;
+
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+li:hover {
+  border-color: #cfe5e1;
+  box-shadow: var(--shadow);
+}
+
+li button {
+  padding: 6px 10px;
+}
+
+/* ---------- Status helpers ---------- */
+
+.bad,
+.overdue {
+  color: var(--red-600);
+  font-weight: 650;
+}
+
+.ok,
+.paid {
+  color: var(--green-600);
+  font-weight: 650;
+}
+
+.warn {
+  color: var(--amber-600);
+  font-weight: 650;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* ---------- Status tags ---------- */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 4px 10px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+  font-weight: 650;
+
+  background: #f3f4f6;
+  color: var(--muted);
+}
+
+.tag.ok,
+.tag.paid {
+  background: var(--green-50);
+  color: var(--green-600);
+}
+
+.tag.bad,
+.tag.overdue {
+  background: var(--red-50);
+  color: var(--red-600);
+}
+
+.tag.warn {
+  background: var(--amber-50);
+  color: var(--amber-600);
+}
+
+/* ---------- Footer ---------- */
+
+.app-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  max-width: 1240px;
+
+  margin: 0 auto;
+  padding: 18px 28px;
+
+  border-top: 1px solid var(--line);
+}
+
+.app-footer p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.app-footer strong {
+  color: var(--teal-700);
+}
+
+.app-footer span {
+  margin-left: 8px;
+}
+
+.footer-version {
+  font-size: 11px !important;
+}
+
+/* ---------- Responsive design ---------- */
+
+@media (max-width: 1000px) {
+  .topbar {
+    padding: 14px 20px;
+  }
+
+  main {
+    padding: 24px 20px 50px;
+  }
+}
+
+@media (max-width: 720px) {
+
+  .topbar {
+    position: relative;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 14px;
+
+    padding: 16px;
+  }
+
+  .brand {
+    justify-content: flex-start;
+  }
+
+  .header-actions {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+
+  nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 8px;
+  }
+
+  nav button {
+    width: 100%;
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+
+  main {
+    padding: 18px 14px 40px;
+  }
+
+  section {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  form {
+    padding: 12px;
+  }
+
+  label {
+    width: 100%;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    min-width: 0;
+  }
+
+  table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  th,
+  td {
+    padding: 10px 12px;
+  }
+
+  li {
+    padding: 12px;
+  }
+
+  .app-footer {
+    padding: 18px 14px;
+  }
+
+  .app-footer span {
+    display: block;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-info h1 {
+    font-size: 17px;
+  }
+
+  nav button {
+    font-size: 11px;
+  }
+
+  h2 {
+    font-size: 19px;
+  }
+}
+
+/* ---------- Accessibility ---------- */
+
+:focus-visible {
+  outline: 2px solid var(--teal-600);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(20, 145, 138, 0.18);
+  color: var(--ink);
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* CASH PILOT DASHBOARD */
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.dashboard-header h2 {
+  margin-bottom: 5px;
+}
+
+.dashboard-header p {
+  color: #64748b;
+  margin: 0;
+}
+
+.dashboard-date {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dashboard-card,
+.dashboard-panel {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.dashboard-card span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.dashboard-card h2 {
+  font-size: 25px;
+  margin: 12px 0 6px;
+  color: #0f172a;
+  overflow-wrap: anywhere;
+}
+
+.dashboard-card small {
+  color: #94a3b8;
+}
+
+.dashboard-secondary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.dashboard-panel {
+  margin-bottom: 16px;
+}
+
+.dashboard-panel h3 {
+  margin: 0 0 16px;
+  color: #0f172a;
+}
+
+.dashboard-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.dashboard-list-item:last-child {
+  border-bottom: none;
+}
+
+.dashboard-list-item small {
+  display: block;
+  color: #94a3b8;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.dashboard-payment-right {
+  text-align: right;
+}
+
+.income-text {
+  color: #059669;
+}
+
+.expense-text {
+  color: #dc2626;
+}
+
+.empty-state {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+@media (max-width: 850px) {
+  .dashboard-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 550px) {
+  .dashboard-secondary {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-card {
+    padding: 15px;
+  }
+
+  .dashboard-card h2 {
+    font-size: 21px;
+  }
+}
+/* CASH FLOW CHART */
+
+.cashflow-panel {
+  margin-bottom: 20px;
+}
+
+.cashflow-legend {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.cashflow-legend span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.cashflow-legend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.legend-income {
+  background: #0d9488;
+}
+
+.legend-expense {
+  background: #f59e0b;
+}
+
+.cashflow-chart {
+  height: 190px;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.cashflow-month {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  min-width: 0;
+}
+
+.cashflow-bars {
+  height: 155px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 5px;
+}
+
+.cashflow-bar {
+  width: 24%;
+  max-width: 22px;
+  min-height: 2px;
+  border-radius: 5px 5px 0 0;
+}
+
+.income-bar {
+  background: #0d9488;
+}
+
+.expense-bar {
+  background: #f59e0b;
+}
+
+.cashflow-month small {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.cashflow-note {
+  color: #94a3b8;
+  font-size: 12px;
+  margin-top: 15px;
+}
