@@ -1444,7 +1444,121 @@ function monthlyReportHtml() {
         </section>
     `;
 }
+// ============================================================
+// CASH PILOT - AUTOMATIC DEMO DATA
+// ============================================================
 
+if (
+  !localStorage.getItem('cashPilotDemoSeeded') &&
+  families.length === 0 &&
+  invoices.length === 0 &&
+  bills.length === 0
+) {
+  const today = todayDateStr();
+
+  // Sample families
+  families = [
+    {
+      id: 1001,
+      familyName: 'Rahul Sharma',
+      studentName: 'Aarav Sharma',
+      fee: 3000
+    },
+    {
+      id: 1002,
+      familyName: 'Priya Verma',
+      studentName: 'Ananya Verma',
+      fee: 4000
+    },
+    {
+      id: 1003,
+      familyName: 'Amit Kumar',
+      studentName: 'Rohan Kumar',
+      fee: 2500
+    },
+    {
+      id: 1004,
+      familyName: 'Neha Gupta',
+      studentName: 'Ishita Gupta',
+      fee: 3500
+    }
+  ];
+
+  // Sample invoices
+  invoices = [
+    {
+      id: 2001,
+      familyId: 1001,
+      amount: 3000,
+      dueDate: addDaysStr(today, -7),
+      status: 'unpaid'
+    },
+    {
+      id: 2002,
+      familyId: 1002,
+      amount: 4000,
+      dueDate: addDaysStr(today, -5),
+      status: 'paid',
+      paidAt: addDaysStr(today, -5)
+    },
+    {
+      id: 2003,
+      familyId: 1003,
+      amount: 2500,
+      dueDate: addDaysStr(today, 5),
+      status: 'unpaid'
+    },
+    {
+      id: 2004,
+      familyId: 1004,
+      amount: 3500,
+      dueDate: addDaysStr(today, -2),
+      status: 'paid',
+      paidAt: addDaysStr(today, -2)
+    }
+  ];
+
+  // Sample bills
+  bills = [
+    {
+      id: 3001,
+      payee: 'Internet Bill',
+      amount: 999,
+      dueDate: addDaysStr(today, 4),
+      status: 'unpaid'
+    },
+    {
+      id: 3002,
+      payee: 'Study Materials',
+      amount: 1200,
+      dueDate: addDaysStr(today, -3),
+      status: 'paid',
+      paidAt: addDaysStr(today, -3)
+    },
+    {
+      id: 3003,
+      payee: 'Electricity Bill',
+      amount: 1500,
+      dueDate: addDaysStr(today, 9),
+      status: 'unpaid'
+    }
+  ];
+
+  cashInHand = 8000;
+
+  // Save sample data
+  saveFamilies();
+  saveInvoices();
+  saveBills();
+  localStorage.setItem('cashInHand', String(cashInHand));
+
+  localStorage.setItem('cashPilotDemoSeeded', 'true');
+}
+
+// Refresh dashboard after sample data initialization
+if (document.getElementById('main')) {
+  showDashboard();
+}
 // ============================================================
 // INITIAL STARTUP
 // ============================================================
