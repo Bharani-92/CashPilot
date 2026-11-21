@@ -1367,36 +1367,51 @@ function restoreCashPilotData(event) {
             const data = JSON.parse(e.target.result);
 
             if (
+                !data ||
                 !Array.isArray(data.families) ||
                 !Array.isArray(data.invoices) ||
-                !Array.isArray(data.bills) ||
-                !Array.isArray(data.expectedFees) ||
-                typeof data.cashInHand !== 'number' ||
-                !Number.isFinite(data.cashInHand)
+                !Array.isArray(data.bills)
             ) {
-                throw new Error('Invalid backup file');
+                throw new Error('Invalid backup structure');
+            }
+
+            const restoredCash = Number(data.cashInHand ?? 0);
+
+            if (!Number.isFinite(restoredCash)) {
+                throw new Error('Invalid cash balance');
             }
 
             if (!confirm('This will replace your current CashPilot data. Continue?')) {
-                event.target.value = '';
                 return;
             }
 
             families = data.families;
             invoices = data.invoices;
             bills = data.bills;
-            expectedFees = data.expectedFees;
-            cashInHand = data.cashInHand;
+            expectedFees = Array.isArray(data.expectedFees)
+                ? data.expectedFees
+                : [];
+            cashInHand = restoredCash;
 
-            saveData();
+            saveFamilies();
+            saveInvoices();
+            saveBills();
+            localStorage.setItem('cashInHand', String(cashInHand));
+            localStorage.setItem('expectedFees', JSON.stringify(expectedFees));
 
             alert('Backup restored successfully!');
             showDashboard();
 
         } catch (error) {
-            alert('Invalid backup file. Please select a valid CashPilot backup.');
+            console.error('Restore error:', error);
+            alert('Restore failed: ' + error.message);
+        } finally {
+            event.target.value = '';
         }
+    };
 
+    reader.onerror = function() {
+        alert('Could not read the selected file.');
         event.target.value = '';
     };
 
